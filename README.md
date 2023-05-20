@@ -17,3 +17,23 @@ There are three ways to execute the previously built image:
 1. Navigate to `build/native/nativeCompile` and execute native image `./spring-boot-3`
 2. Add a new `Run Configuration` to execute the shell script `spring-boot-3`. **ATTENTION**: Let the `Interpreter path` empty.
 3. `Ctrl+Alt+S` -> `Tools` -> `External Tools`
+
+
+## Observability
+**PRECONDITION**: The `Spring Actuator` dependency must be added and activated in `application.yaml`  
+Observability is based on the project: [Micrometer](https://micrometer.io/)
+
+There are two ways to add Observability and Metrics to an REST API:
+1. Programmatically added like: 
+    ```java
+        @GetMapping("/customer/{name}")
+        Iterable<Customer> byName(@PathVariable String name) {
+            ...
+            return Observation
+                    .createNotStarted("by-name", this.registry)
+                    .observe(() -> repository.findByName(name));
+    ```
+    
+2. Use Annotation to add Observability see: [Baeldung: Observability with Spring Boot 3](https://www.baeldung.com/spring-boot-3-observability)
+
+For this example one can find the metrics under `http://localhost:8080/actuator/metrics/by-name`
