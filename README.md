@@ -21,7 +21,10 @@ There are three ways to execute the previously built image:
 
 ## Observability
 **PRECONDITION**: The `Spring Actuator` dependency must be added and activated in `application.yaml`  
-Observability is based on the project: [Micrometer](https://micrometer.io/)
+Observability is based on the project: [Micrometer](https://micrometer.io/).
+Micrometer provides a simple facade over the instrumentation clients for the most popular observability systems, 
+allowing you to instrument your JVM-based application code without vendor lock-in. 
+Think SLF4J, but for observability.
 
 There are two ways to add Observability and Metrics to an REST API:
 1. Programmatically added like: 
@@ -37,3 +40,14 @@ There are two ways to add Observability and Metrics to an REST API:
 2. Use Annotation to add Observability see: [Baeldung: Observability with Spring Boot 3](https://www.baeldung.com/spring-boot-3-observability)
 
 For this example one can find the metrics under `http://localhost:8080/actuator/metrics/by-name`
+
+### Observability Definition
+Observability is about more than just having data or logs available; it's about being able to understand 
+what's happening inside the system just by observing the system from the outside. 
+In a highly observable system, you can answer any questions about what's happening inside the system 
+just by looking at the system's output data.
+
+This is incredibly important in modern distributed architectures where debugging can no longer be accomplished 
+with traditional means due to the systems' complexity. This is where observability tools come in: 
+they collect data from your systems (`logs`, `metrics`, and `traces` **usually known as the three pillars of observability**) 
+and provide a unified view to help you understand what's going on.
