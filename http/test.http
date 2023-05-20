@@ -1,0 +1,16 @@
+###
+GET http://localhost:8080/actuator/metrics
+Accept: application/json
+
+### Search for code: return Observation.createNotStarted("by-name", this.registry).observe(() -> repository.findByName(name));
+GET http://localhost:8080/actuator/metrics/by-name
+Accept: application/json
+
+###
+GET http://localhost:8080/customer
+
+### Replaces: curl http://localhost:8080/customer/Madhura | jq
+GET http://localhost:8080/customer/{{name}}
+Accept: application/json
+
+
